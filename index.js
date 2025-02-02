@@ -1,17 +1,8 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-
-// Load environment variables from a .env file
-dotenv.config();
+import express from 'express';
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors()); // Enable CORS
-app.use(express.json()); // Parse JSON bodies
-const port = process.env.PORT || 3000;
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+app.get("/", (req, res) => res.send("Server is running"));
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
